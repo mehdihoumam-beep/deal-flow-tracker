@@ -2,8 +2,7 @@
    Voir GUIDE-INSTALLATION.md pour la marche a suivre complete. */
 window.DEAL_FLOW_CONFIG = {
   // Colle ici le "Application (client) ID" recupere dans Microsoft Entra > Inscriptions d'applications.
-  CLIENT_ID: "7a925922-25d3-4dee-823f-7e6b1eb2f11b",
-
+  CLIENT_ID: "6ccea910-1bdd-46d8-99e7-e8abb97e6311",
   // Ne pas modifier : restreint la connexion aux comptes Microsoft personnels.
   AUTHORITY: "https://login.microsoftonline.com/consumers",
 
