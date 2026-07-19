@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deal Flow Tracker</title>
+<link rel="stylesheet" href="style.css">
+<!-- MSAL v3 n'est plus servi par le CDN officiel Microsoft : on utilise jsDelivr, qui miroir tous les paquets npm. -->
+<script src="https://cdn.jsdelivr.net/npm/@azure/msal-browser@3/lib/msal-browser.min.js"></script>
+<script src="config.js"></script>
+</head>
+<body>
+
+<!-- Ecran de connexion -->
+<div id="login-screen">
+  <div class="login-card">
+    <h1>&#128188; Deal Flow Tracker</h1>
+    <p>Tes deals, synchronises dans ton OneDrive. Connecte-toi avec ton compte Microsoft pour continuer.</p>
+    <button class="primary" id="login-btn" type="button">Se connecter avec Microsoft</button>
+    <p id="login-status" class="login-status"></p>
+  </div>
+</div>
+
+<!-- Application -->
+<div id="app-root" class="hidden">
+  <header>
+    <h1>&#128188; Deal Flow Tracker</h1>
+
+    <div class="view-toggle" id="view-toggle">
+      <button class="view-btn active" data-view="kanban">Kanban</button>
+      <button class="view-btn" data-view="table">Tableau</button>
+      <button class="view-btn" data-view="dashboard">Tableau de bord</button>
+    </div>
+
+    <span class="stat-pill" id="stat-total"></span>
+    <span class="stat-pill" id="stat-overdue"></span>
+    <span class="stat-pill" id="save-indicator">&#10003; Synchronise avec OneDrive</span>
+
+    <div class="spacer"></div>
+
+    <input type="text" id="search" placeholder="Rechercher un deal...">
+
+    <div id="filters-bar" class="filters-bar"></div>
+
+    <button class="ghost" id="reset-filters">Reinitialiser</button>
+    <button class="ghost" id="settings-btn">&#9881;&#65039; Parametres</button>
+    <button class="ghost" id="logout-btn">Deconnexion</button>
+    <button class="primary" id="new-deal-btn">+ Nouveau deal</button>
+  </header>
+
+  <main id="kanban-view"><div id="board"></div></main>
+  <main id="table-view" class="hidden"><div id="table-container"></div></main>
+  <main id="dashboard-view" class="hidden"><div id="dashboard-container"></div></main>
+</div>
+
+<div id="modal-overlay">
+  <div id="modal"></div>
+</div>
+
+<div id="settings-overlay">
+  <div id="settings-modal"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
